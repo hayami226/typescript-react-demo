@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 
-const Container = styled.span``;
+const Container = styled.span<{isBlue:boolean}>`
+    color: ${props => props.isBlue ? props.theme.blueColor : "Black"};
+    font-weight: bold;
+`;
 
 interface IProps {
     count:number;
@@ -9,7 +12,7 @@ interface IProps {
 
 const Number:React.FunctionComponent<IProps> = ({count}) => {
     return(
-        <Container>{count}</Container>
+        <Container isBlue={count > 10}>{count}</Container>
     );
 }
 
